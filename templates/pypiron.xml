@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>pypiron</Name>
+  <Repository>ghcr.io/blackthorn-interstellar/pypiron:latest</Repository>
+  <Registry>https://ghcr.io/blackthorn-interstellar/pypiron</Registry>
+  <Network>bridge</Network>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/blackthorn-interstellar/pypiron/issues</Support>
+  <Project>https://pypiron.com</Project>
+  <Overview>Self-hosted PyPI server that does four jobs from one URL and one binary: hosts your private uploads, mirrors an allowlist of public packages, proxies the rest of PyPI on demand, and serves it all from a standard simple index. No database — the files on disk ARE the truth and the indexes are regenerable views, so backups are just the appdata folder. Speaks pip / uv / poetry / pdm / twine unchanged.&#13;&#13;Point pip or uv at http://YOUR-UNRAID-IP:8080/simple/ and you have a working index. Set the Admin Password to enable uploads and admin (publish / delete / yank / mirror); leave it blank for a read-only public index. To proxy public PyPI on demand, set Proxy Upstream to https://pypi.org/simple/.&#13;&#13;Notes for Unraid: the container runs as the standard appdata user (99:100) so it can write to /data. The Data path IS your registry — back it up. Heads-up: pypiron is early (version 0.0.0 placeholder, beta) — run it where the blast radius is bounded.</Overview>
+  <Category>Network:Management Tools:Utilities</Category>
+  <WebUI>http://[IP]:[PORT:8080]/</WebUI>
+  <Icon>https://raw.githubusercontent.com/blackthorn-interstellar/pypiron-unraid/main/icon.png</Icon>
+  <TemplateURL>https://raw.githubusercontent.com/blackthorn-interstellar/pypiron-unraid/main/templates/pypiron.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/blackthorn-interstellar/pypiron-unraid/main/README.md</ReadMe>
+  <ExtraParams>--user 99:100</ExtraParams>
+  <ExtraSearchTerms>pypi python package index registry mirror proxy private devpi pypiserver bandersnatch proxpi uv pip twine</ExtraSearchTerms>
+  <Requires>Outbound internet is only needed if you enable the proxy or sync. A pure private index needs none.</Requires>
+  <Changes>### 0.0.0&#13;Initial Community Applications release.</Changes>
+  <Date>2026-06-29</Date>
+  <MinVer>6.12.0</MinVer>
+  <License>MIT</License>
+  <Config Name="WebUI Port" Target="8080" Default="8080" Mode="tcp" Description="HTTP port the index and web dashboard listen on." Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+  <Config Name="Data" Target="/data" Default="/mnt/user/appdata/pypiron" Mode="rw" Description="The package storage tree — this IS your registry (private uploads + mirrored/proxied cache). Back it up. Upload/proxy spooling also lands here, so multi-GB wheels never spool into container RAM." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/pypiron</Config>
+  <Config Name="Admin Password" Target="PYPIRON_ADMIN_PASS" Default="" Mode="" Description="Set this to enable uploads + admin actions (publish / delete / yank / mirror). Leave blank for a read-only public index. Reads stay public unless you also set a Read Password." Type="Variable" Display="always" Required="false" Mask="true"></Config>
+  <Config Name="Proxy Upstream" Target="PYPIRON_PROXY_UPSTREAM" Default="" Mode="" Description="Turn on the on-demand pull-through proxy of a public index. Set to https://pypi.org/simple/ to lazily proxy and cache PyPI. Leave blank for a private-only index." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="Admin User" Target="PYPIRON_ADMIN_USER" Default="admin" Mode="" Description="Username for the admin credential." Type="Variable" Display="advanced" Required="false" Mask="false">admin</Config>
+  <Config Name="Spool Dir" Target="PYPIRON_SPOOL_DIR" Default="/data/spool" Mode="" Description="Where uploads/downloads spool to disk. Kept under /data (real disk) on purpose so large wheels never spool into container RAM." Type="Variable" Display="advanced" Required="false" Mask="false">/data/spool</Config>
+  <Config Name="Read User" Target="PYPIRON_READ_USER" Default="" Mode="" Description="Set Read User + Read Password to make the whole index private (reads require auth). Leave both blank to keep reads public." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="Read Password" Target="PYPIRON_READ_PASS" Default="" Mode="" Description="Password for the read credential (see Read User)." Type="Variable" Display="advanced" Required="false" Mask="true"></Config>
+</Container>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<CommunityApplications>
+  <Profile>
+Templates for **pypiron** — a self-hosted PyPI server in a single binary, with no database.
+
+One container hosts your private package uploads, mirrors an allowlist of public packages, proxies the rest of PyPI on demand, and serves it all from a standard simple index. The files on disk are the truth; the indexes are regenerable views, so backing it up is backing up one folder.
+
+Speaks pip / uv / poetry / pdm / twine unchanged. Fail-closed against dependency confusion: private names never fall through to upstream.
+
+Source, docs, and the full benchmark methodology: https://pypiron.com · https://github.com/blackthorn-interstellar/pypiron
+
+Support: open an issue at https://github.com/blackthorn-interstellar/pypiron/issues
+  </Profile>
+  <Icon>https://raw.githubusercontent.com/blackthorn-interstellar/pypiron-unraid/main/icon.png</Icon>
+  <WebPage>https://pypiron.com</WebPage>
+</CommunityApplications>
