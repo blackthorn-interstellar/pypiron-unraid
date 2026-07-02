@@ -41,7 +41,7 @@ arbitrary uid is fine. (That's also why there's no console/shell button.)
 
 ## Publishing to Community Applications
 
-1. Push this repo to `github.com/blackthorn-interstellar/pypiron-unraid` on the `main`
+1. Push this repo to `github.com/blackthorn-interstellar/pypiron-unraid` on the `master`
    branch (the raw URLs in `ca_profile.xml` and `templates/pypiron.xml` assume that).
 2. Submit the repo at [`ca.unraid.net/submit`](https://ca.unraid.net/submit) — the
    validator parses `ca_profile.xml` + the template, checks for duplicates, and previews
@@ -51,7 +51,7 @@ Updating the listing later is just a push to this repo; CA re-scans.
 
 ## Before first submission
 
-- [ ] Create the GitHub repo and push (`main` branch).
+- [ ] Create the GitHub repo and push (`master` branch).
 - [ ] Create an Unraid support forum thread and swap `<Support>` in `templates/pypiron.xml`
       from the GitHub issues URL to the forum topic (CA prefers a forum thread).
 - [ ] Confirm `ghcr.io/blackthorn-interstellar/pypiron:latest` is public and multi-arch.

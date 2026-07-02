@@ -10,9 +10,9 @@
   <Overview>Self-hosted PyPI server that does four jobs from one URL and one binary: hosts your private uploads, mirrors an allowlist of public packages, proxies the rest of PyPI on demand, and serves it all from a standard simple index. No database — the files on disk ARE the truth and the indexes are regenerable views, so backups are just the appdata folder. Speaks pip / uv / poetry / pdm / twine unchanged.&#13;&#13;Point pip or uv at http://YOUR-UNRAID-IP:8080/simple/ and you have a working index. Set the Admin Password to enable uploads and admin (publish / delete / yank / mirror); leave it blank for a read-only public index. To proxy public PyPI on demand, set Proxy Upstream to https://pypi.org/simple/.&#13;&#13;Notes for Unraid: the container runs as the standard appdata user (99:100) so it can write to /data. The Data path IS your registry — back it up. Heads-up: pypiron is early (version 0.0.0 placeholder, beta) — run it where the blast radius is bounded.</Overview>
   <Category>Network:Management Tools:Utilities</Category>
   <WebUI>http://[IP]:[PORT:8080]/</WebUI>
-  <Icon>https://raw.githubusercontent.com/blackthorn-interstellar/pypiron-unraid/main/icon.png</Icon>
-  <TemplateURL>https://raw.githubusercontent.com/blackthorn-interstellar/pypiron-unraid/main/templates/pypiron.xml</TemplateURL>
-  <ReadMe>https://raw.githubusercontent.com/blackthorn-interstellar/pypiron-unraid/main/README.md</ReadMe>
+  <Icon>https://raw.githubusercontent.com/blackthorn-interstellar/pypiron-unraid/master/icon.png</Icon>
+  <TemplateURL>https://raw.githubusercontent.com/blackthorn-interstellar/pypiron-unraid/master/templates/pypiron.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/blackthorn-interstellar/pypiron-unraid/master/README.md</ReadMe>
   <ExtraParams>--user 99:100</ExtraParams>
   <ExtraSearchTerms>pypi python package index registry mirror proxy private devpi pypiserver bandersnatch proxpi uv pip twine</ExtraSearchTerms>
   <Requires>Outbound internet is only needed if you enable the proxy or sync. A pure private index needs none.</Requires>
